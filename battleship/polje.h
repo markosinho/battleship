@@ -7,7 +7,6 @@
 #include <vector>
 
 using namespace std;
-// Istripovao sam da pisem na engleskom kod, a komentare i opis i tako to na srpskom, moze? :D
 
 class Field{
    public:
