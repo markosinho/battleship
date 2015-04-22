@@ -40,7 +40,6 @@ void Field::setId(int x)
     id = x;
 }
 
-// Kako da izbegnemo unosenje dimenzija matrice?
 void Field::createShip(int x1, int y1, int x2, int y2, vector <vector <Field> > &f)
 {
     /* Kreiranje broda s datim koordinatama pocetka i kraja */
@@ -89,18 +88,17 @@ void Field::createShipRandom(int size, vector <vector <Field> > &f)
 
 
     bool vertical = false;
-
+    // Random da li ce biti horizontalan ili vertikalan brod
     if((rand() % 12) > 5)
         vertical = true;
 
 
     x1 = ((rand()*150 + 16) * 21 + 3) % 8;
     y1 = ((rand()*150 + 16) * 21 + 3) % 8;
+    
+    
 
     // Provera da li su koordinate pocetka negde gde mora da bude brod horizontalan/vertikalan
-    // Ovo cu veceras da dopunim ;)
-
-    // Random da li ce biti horizontalan ili vertikalan brod
     if(vertical)
     {
         if((x1 + size) > 7)
@@ -123,8 +121,7 @@ void Field::createShipRandom(int size, vector <vector <Field> > &f)
 
         x2 = x1;
     }
-    // Sledeci problem: brod nikad nece biti u malim koordinatama osim ako mu nije pocetak tu???!
-
+    
     /*
     if(x1 < (rand()%8))
     {
