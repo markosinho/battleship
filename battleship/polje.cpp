@@ -134,6 +134,7 @@ void Field::createShipRandom(int size, vector <vector <Field> > &f)
 
 }
 
+
 // Crtanje matrice (nakon svakog gadjanja)
 void Field::printSea(vector <vector <Field> > &f)
 {
@@ -141,9 +142,9 @@ void Field::printSea(vector <vector <Field> > &f)
 
     // Kad se ubace koordinate 7, 7 ostane neka boja aktivna
 
-    for(int i = 0; i < f.size(); i++)
+    for(unsigned int i = 0; i < f.size(); i++)
     {
-        for(int j = 0; j < f[0].size(); j++)
+        for(unsigned int j = 0; j < f[0].size(); j++)
         {
 
             if(f[i][j].isHit())					// Provera da li je dato Polje pogodjeno
@@ -173,3 +174,53 @@ void Field::printSea(vector <vector <Field> > &f)
                 FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
 
 }
+
+
+// NE radi, treba da se zavrsi
+//int Field::zauzeto(int x1, int y1, int x2, int y2, vector <vector <Field> > &f);
+//{
+//      int i1,i2,j1,j2;
+//      // Mora da proverimo da li se brod nalazi na ivici mora.  Mora vaziti x1 < x2 i y1 < y2
+
+//      if(x1>x2)
+//      {
+//          int pom=x1;
+//          x1=x2;
+//          x2=pom;
+//      }
+
+//      if(y1>y2)
+//      {
+//          int pom=y1;
+//          y1=y2;
+//          y2=pom;
+//      }
+
+
+
+//      if(x1-1<0)
+//        i1=x1;
+//      else i1=x1+1;
+
+//      if(x2+1>7)
+//        i2=x2;
+//      else i2=x2+1;
+
+//      if(y1-1<0)
+//        j1=y1;
+//      else j1=y1+1;
+
+//      if(y2+1>7)
+//        j2=y2;
+//      else j2=y2+1;
+
+//    for(int i1;i<i2;i1++)
+//       for(j1;j<j2;j1++)
+//        {
+//         if(f[i1][j1].getid!=0 )
+//             return 1;
+//        }
+
+
+//    return 0;
+//}

@@ -19,6 +19,7 @@ class Field{
        static void createShip(int x1, int y1, int x2, int y2, vector <vector <Field> > &f);
        static void printSea(vector <vector <Field> > &f);
        static void createShipRandom(int size, vector <vector <Field> > &f);
+//       int zauzeto(int x1, int y1, int x2, int y2, vector <vector <Field> > &f);
 
    private:
        bool hit;
