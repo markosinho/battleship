@@ -20,7 +20,7 @@ int main()
    // Prvobitan izgled
    Field::printSea(sea);
 
-//   int x1, y1, x2, y2;
+
 
 
 
@@ -36,6 +36,19 @@ int main()
 
    */
    Field::createShipRandom(4, sea);
+   Field::createShipRandom(2, sea);
+
+   int x1, y1, x2, y2;
+   // Unos koordinata pocetka i kraja
+   cout << "Unesite koordinate pocetka:" << endl;
+   cin >> x1 >> y1;
+   cout << "Unesite koordinate kraja:" << endl;
+   cin >> x2 >> y2;
+
+   // Kreiranje broda
+   Field::createShip(x1, y1, x2, y2, sea);
+
+
 
    int x = 0;
    int y = 0;

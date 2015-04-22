@@ -62,6 +62,9 @@ void Field::createShip(int x1, int y1, int x2, int y2, vector <vector <Field> > 
 
     int i = 0;
     // Kreiranje broda
+
+    if( !Field::fieldBusy(x1,y1,x2,y2,f))
+    {
     if(y1 == y2)
         for(i = x1; i <= x2; i++)
             f[i][y1].setId(1);
@@ -70,14 +73,21 @@ void Field::createShip(int x1, int y1, int x2, int y2, vector <vector <Field> > 
             f[x1][i].setId(1);
 
     cout << "Brod je kreiran!" << endl;
+    }
+    else
+    {
+    cout << "Brod nije kreiran! Vec postoji brod na tim koordinatama ili pored njih" << endl;
+    }
 }
 
 // Kreiranje broda zadate velicine na nepoznatim koordinatama
 void Field::createShipRandom(int size, vector <vector <Field> > &f)
 {
+    int x1, x2, y1, y2;
+    do{
     srand(time(0));
 
-    int x1, x2, y1, y2;
+
     bool vertical = false;
 
     if((rand() % 12) > 5)
@@ -127,9 +137,11 @@ void Field::createShipRandom(int size, vector <vector <Field> > &f)
         x2 = x1 + size - 1;
     }
     */
+
+    cout<< "Okrecem se " << endl;
+    }while(Field::fieldBusy(x1, y1, x2, y2, f));
     cout << "Za pocetak da vidimo kako radi:" << endl;
     cout << x1 << ' ' << y1 << ' ' << x2 << ' ' << y2 << endl;
-
     Field::createShip(x1, y1, x2, y2, f);
 
 }
@@ -176,51 +188,58 @@ void Field::printSea(vector <vector <Field> > &f)
 }
 
 
-// NE radi, treba da se zavrsi
-//int Field::zauzeto(int x1, int y1, int x2, int y2, vector <vector <Field> > &f);
-//{
-//      int i1,i2,j1,j2;
-//      // Mora da proverimo da li se brod nalazi na ivici mora.  Mora vaziti x1 < x2 i y1 < y2
-
-//      if(x1>x2)
-//      {
-//          int pom=x1;
-//          x1=x2;
-//          x2=pom;
-//      }
-
-//      if(y1>y2)
-//      {
-//          int pom=y1;
-//          y1=y2;
-//          y2=pom;
-//      }
+//Gledamo da li su zauzeta polja, kod pod komentarom sluzi kao pomoc pri testiranju
+bool Field::fieldBusy(int x1, int y1, int x2, int y2, vector<vector<Field> > &f)
+{
+    int i1,i2,j1,j2;
 
 
+    if(x1>x2)
+    {
+        int pom=x1;
+        x1=x2;
+        x2=pom;
+    }
 
-//      if(x1-1<0)
-//        i1=x1;
-//      else i1=x1+1;
+    if(y1>y2)
+    {
+        int pom=y1;
+        y1=y2;
+        y2=pom;
+    }
 
-//      if(x2+1>7)
-//        i2=x2;
-//      else i2=x2+1;
+    // Mora da proverimo da li se brod nalazi na ivici mora.  Mora vaziti x1 < x2 i y1 < y2
+    if(x1-1<0)
+      i1=x1;
+    else i1=x1-1;
 
-//      if(y1-1<0)
-//        j1=y1;
-//      else j1=y1+1;
+    if(x2+1>7)
+      i2=x2;
+    else i2=x2+1;
 
-//      if(y2+1>7)
-//        j2=y2;
-//      else j2=y2+1;
+    if(y1-1<0)
+      j1=y1;
+    else j1=y1-1;
 
-//    for(int i1;i<i2;i1++)
-//       for(j1;j<j2;j1++)
-//        {
-//         if(f[i1][j1].getid!=0 )
-//             return 1;
-//        }
+    if(y2+1>7)
+      j2=y2;
+    else j2=y2+1;
 
+    // nakon svakog kretanja kroz petlju j1 mora da se vrati na pocetak
+    int pomJ1=j1;
+//    cout << i1 << " " << j1 << " "<< i2 << " " << j2<<endl;
+  for(i1;i1<=i2;i1++)
+  {
 
-//    return 0;
-//}
+     for(j1=pomJ1;j1<=j2;j1++)
+      {
+       if(f[i1][j1].getId() !=0 )
+           return true;
+  //     cout<< f[i1][j1].getId();
+      }
+  //   cout<<endl;
+
+    }
+  //  cout << "Uspedno pregledano" << endl;
+  return false;
+}
