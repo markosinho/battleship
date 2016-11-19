@@ -1,8 +1,9 @@
 # battleship
 
+GLAVNI REPOSITORY: https://github.com/MATF-RS15/rs15-10 
 
 Svaki igrač ima dve tablice, jednu svoju na kojoj pravi raspored brodova (vertikalno i horizontalno),
-i jednu na kojoj obeležava koje polje gađa. Tablice najverovatnije oblika 8*8 i brodovi
+i jednu na kojoj obeležava koje polje gađa. Tablice oblika 8*8 i brodovi
 4 x 1
 3 x 2
 2 x 3
